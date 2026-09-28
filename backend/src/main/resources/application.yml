@@ -1,0 +1,7 @@
+# Domyślnie: serwis "users" na porcie 8081.
+# Drugi egzemplarz uruchamiamy jako "orders" na 8082 (patrz scripts/start-backends.sh).
+server:
+  port: ${PORT:8081}
+app:
+  service-name: ${SERVICE_NAME:users}
+  accepted-prefix: ${ACCEPTED_PREFIX:/users}

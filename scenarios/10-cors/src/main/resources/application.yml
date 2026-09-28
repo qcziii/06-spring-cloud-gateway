@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowed-origins: "http://localhost:3000"
+                allowed-methods: "*"
+                allowed-headers: "*"
+          routes:
+            - id: users
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/users/**
+              filters:
+                - StripPrefix=1
+            - id: orders
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/orders/**
+              filters:
+                - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,gateway
+  endpoint:
+    gateway:
+      access: read-only

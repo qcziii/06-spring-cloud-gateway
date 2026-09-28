@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Agregat: `mvn package -DskipTests` buduje backend i gatewaye wszystkich scenariuszy naraz. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.kurs</groupId>
+    <artifactId>scg-exercises</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>backend</module>
+        <module>scenarios/01-brak-gwiazdek-w-path</module>
+        <module>scenarios/02-strip-prefix</module>
+        <module>scenarios/03-sciezka-w-uri</module>
+        <module>scenarios/04-kolejnosc-tras</module>
+        <module>scenarios/05-stary-prefiks-konfiguracji</module>
+        <module>scenarios/06-predykat-metody</module>
+        <module>scenarios/07-backend-nie-odpowiada</module>
+        <module>scenarios/08-load-balancer</module>
+        <module>scenarios/09-timeout</module>
+        <module>scenarios/10-cors</module>
+        <module>scenarios/11-starter-web</module>
+        <module>scenarios/12-wlasny-filtr-globalny</module>
+    </modules>
+</project>
