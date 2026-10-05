@@ -54,6 +54,16 @@ Przeczytaj `ZADANIE.md` w katalogu scenariusza, odtwórz problem curlem, znajdź
 
 Gateway w każdym scenariuszu ma włączony endpoint `/actuator/gateway/routes`. Warto z niego korzystać.
 
+### Port zajęty
+
+Jeśli `start-backends.sh` zgłasza zajęty port albo gateway nie startuje przez zajęty 8080, zwykle działa jeszcze proces z poprzedniej sesji (np. po zamknięciu terminala). Najpierw `./scripts/stop-backends.sh`. Jeśli to nie pomoże, w PowerShellu:
+
+```powershell
+Get-NetTCPConnection -LocalPort 8080,8081,8082 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+```
+
+Na Linuksie i macOS: `kill $(lsof -t -i :8081 -i :8082)`.
+
 ## Scenariusze
 
 | # | Zgłoszenie | Poziom |

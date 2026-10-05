@@ -11,6 +11,13 @@ if [ ! -f "$JAR" ]; then
   echo "Buduję backend..."
   (cd "$ROOT/backend" && mvn -q -B package -DskipTests)
 fi
+for port in 8081 8082; do
+  if curl -s -o /dev/null --max-time 2 "localhost:$port/"; then
+    echo "Port $port jest zajęty (może działa stary backend). Zatrzymaj go: ./scripts/stop-backends.sh,"
+    echo "a jeśli to nie pomoże, zobacz sekcję 'Port zajęty' w README."
+    exit 1
+  fi
+done
 mkdir -p "$ROOT/logs"
 PORT=8081 SERVICE_NAME=users  ACCEPTED_PREFIX=users  nohup java -jar "$JAR" > "$ROOT/logs/users.log"  2>&1 & echo $! > "$ROOT/logs/users.pid"
 PORT=8082 SERVICE_NAME=orders ACCEPTED_PREFIX=orders nohup java -jar "$JAR" > "$ROOT/logs/orders.log" 2>&1 & echo $! > "$ROOT/logs/orders.pid"
