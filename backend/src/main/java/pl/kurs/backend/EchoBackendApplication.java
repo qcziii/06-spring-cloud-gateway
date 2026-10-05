@@ -39,9 +39,16 @@ public class EchoBackendApplication {
     @Value("${app.service-name}")
     private String serviceName;
 
-    /** Backend obsługuje tylko ścieżki zaczynające się od tego prefiksu, np. /users */
-    @Value("${app.accepted-prefix}")
-    private String acceptedPrefix;
+    /**
+     * Backend obsługuje tylko ścieżki zaczynające się od tego prefiksu, np. /users.
+     * W konfiguracji podawany bez wiodącego "/" (np. "users"): Git Bash na Windows
+     * zamienia wartości zaczynające się od "/" na ścieżki Windows (C:/Program Files/Git/...).
+     */
+    private final String acceptedPrefix;
+
+    EchoBackendApplication(@Value("${app.accepted-prefix}") String acceptedPrefix) {
+        this.acceptedPrefix = "/" + acceptedPrefix.replaceAll("^/+", "");
+    }
 
     @Bean
     RouterFunction<ServerResponse> echo() {

@@ -4,4 +4,4 @@ server:
   port: ${PORT:8081}
 app:
   service-name: ${SERVICE_NAME:users}
-  accepted-prefix: ${ACCEPTED_PREFIX:/users}
+  accepted-prefix: ${ACCEPTED_PREFIX:users}

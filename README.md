@@ -9,6 +9,8 @@ Masz przed sobą 12 gatewayów, które nie działają. Każdy to osobny projekt 
 - `bash` i `curl` (na Windows: Git Bash)
 - wolne porty 8080, 8081, 8082
 
+**Windows / Git Bash:** Git Bash zamienia argumenty zaczynające się od `/` (np. `/users`) na ścieżki Windows (`C:/Program Files/Git/users`). Skrypty z repo są na to odporne. Jeśli uruchamiasz coś ręcznie i w odpowiedzi lub logach widzisz `C:/Program Files/Git/...`, poprzedź polecenie `MSYS_NO_PATHCONV=1`.
+
 Stos: Spring Boot 4.0, Spring Cloud 2025.1 (Spring Cloud Gateway Server WebFlux).
 
 ## Architektura
