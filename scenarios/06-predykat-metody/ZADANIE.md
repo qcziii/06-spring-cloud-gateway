@@ -30,6 +30,17 @@ curl -i -X POST -H 'Content-Type: application/json' -d '{"product":"kawa"}' http
 
 **Pytanie dodatkowe:** dlaczego gateway zwraca 404, a nie 405 Method Not Allowed?
 
+Method – określa, jakie metody HTTP (np. GET, POST, PUT, DELETE) są dozwolone dla danej trasy w API Gateway.
+
+Przykład: Method=GET,POST oznacza, że Gateway przekazuje żądania GET i POST do backendu, a pozostałe metody nie pasują do tej trasy.
+
+404 Not Found – Gateway nie znalazł trasy, która spełnia wszystkie warunki, ponieważ Method=GET nie dopuszcza POST.
+
+405 Method Not Allowed – oznacza, że dany zasób lub endpoint istnieje, ale nie obsługuje wskazanej metody HTTP.
+
+Ponieważ Gateway nie znalazł trasy pasującej do metody POST. Kod 405 oznacza, że endpoint istnieje, 
+ale nie obsługuje danej metody, natomiast tutaj żądanie nie zostało w ogóle dopasowane do trasy.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

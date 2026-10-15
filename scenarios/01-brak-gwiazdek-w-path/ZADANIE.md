@@ -29,6 +29,9 @@ curl -i http://localhost:8080/api/users/1    # 404
 
 **Pytanie dodatkowe:** skąd wiesz, czy 404 wygenerował gateway, czy backend? (Podpowiedź: porównaj body odpowiedzi z tym, co zwraca `curl http://localhost:8081/nieistnieje`.)
 
+Możemy to rozpoznać po body odpowiedzi. Jeśli jest tam "service": "users" oraz "error", oznacza to, że żądanie dotarło 
+do backendu i to on zwrócił 404. Jeśli Gateway nie dopasował żadnej trasy, sam zwróci 404, bez charakterystycznej odpowiedzi backendu.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

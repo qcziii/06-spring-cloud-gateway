@@ -29,6 +29,28 @@ curl -i -w '\nczas: %{time_total}s\n' 'http://localhost:8080/api/users/reports/m
 
 **Pytanie dodatkowe:** czym się różni `connect-timeout` od `response-timeout`? Który timeout zadziała, gdy backend w ogóle nie istnieje pod danym adresem?
 
+
+connect-timeout – ile maksymalnie czekamy na nawiązanie połączenia z backendem. 
+ogranicza czas nawiązania połączenia z backendem. Jeśli backend nie odpowiada na próbę połączenia, ten timeout może zostać przekroczony.
+
+response-timeout – jak długo czekamy na odpowiedź backendu. 
+ogranicza oczekiwanie na odpowiedź backendu, gdy połączenie zostało już nawiązane.
+
+Raport potrzebuje 3 sekund na przygotowanie odpowiedzi, a nie na nawiązanie połączenia
+
+to :
+
+    metadata:
+    connect-timeout: 5000
+
+zmienić na :
+
+    metadata:
+    response-timeout: 5000
+
+
+Jeśli backend jest niedostępny, problem dotyczy połączenia, więc może zadziałać connect-timeout, ale połączenie może też zostać odrzucone od razu.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.
