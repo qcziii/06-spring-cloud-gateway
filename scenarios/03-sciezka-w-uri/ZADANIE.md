@@ -26,6 +26,10 @@ curl -i http://localhost:8080/api/v2/orders/7
 
 **Oczekiwane:** backend `orders` dostaje `/orders/7` (i `/orders/7/items` dla `/api/v2/orders/7/items`). Stara ścieżka `/api/orders/7` ma dalej działać.
 
+Ponieważ StripPrefix=3 usuwał /api/v2/orders, zostawiając tylko /7. Dodatkowo ścieżka /orders wpisana w uri nie jest
+automatycznie doklejana do żądania.
+Dlatego ustawiamy uri: http://localhost:8082 oraz StripPrefix=2, żeby backend otrzymał /orders/7.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

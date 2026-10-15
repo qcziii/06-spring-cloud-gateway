@@ -28,6 +28,9 @@ curl -i http://localhost:8080/api/users/1
 
 **Pytanie dodatkowe:** czy tym razem trasa w gatewayu została dopasowana? Po czym to poznać?
 
+Tak, ponieważ w odpowiedzi mamy "service": "users" oraz "error". To oznacza, że żądanie dotarło do backendu, 
+ale przez błędny StripPrefix=2 backend otrzymał ścieżkę /1 zamiast /users/1 i zwrócił 404.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

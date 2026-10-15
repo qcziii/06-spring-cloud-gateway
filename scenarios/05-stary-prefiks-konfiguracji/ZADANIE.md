@@ -27,6 +27,10 @@ curl -i http://localhost:8080/api/orders/7
 
 **Oczekiwane:** oba żądania trafiają do właściwych backendów.
 
+Po aktualizacji Spring Cloud Gateway zmienił się sposób definiowania tras w application.yml. Stary zapis
+spring.cloud.gateway.routes trzeba zamienić na
+spring.cloud.gateway.server.webflux.routes, ponieważ Gateway nie wczytywał tras i wszystkie endpointy zwracały 404.
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

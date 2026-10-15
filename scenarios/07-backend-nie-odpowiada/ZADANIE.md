@@ -29,6 +29,18 @@ curl -i http://localhost:8082/orders/7
 
 **Zadanie właściwe:** zanim poprawisz konfigurację, znajdź w **logach gatewaya** komunikat, który wprost mówi, co się stało. Jakie jest `requestId` w body błędu i jak pomaga w szukaniu w logach?
 
+
+błędny adres :
+
+uri: http://localhost:8028
+
+powinno być :
+
+uri: http://localhost:8082
+
+requestId to identyfikator konkretnego żądania HTTP, dzięki któremu można łatwiej znaleźć w logach informacje
+o błędzie i sprawdzić jego przyczynę
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.

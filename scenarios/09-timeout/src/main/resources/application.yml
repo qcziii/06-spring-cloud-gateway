@@ -19,7 +19,7 @@ spring:
               filters:
                 - StripPrefix=1
               metadata:
-                connect-timeout: 5000
+                response-timeout: 5000
             - id: users
               uri: http://localhost:8081
               predicates:

@@ -14,7 +14,7 @@ spring:
               predicates:
                 - Path=/api/users/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=1
             - id: orders
               uri: http://localhost:8082
               predicates:

@@ -22,7 +22,7 @@ spring:
               filters:
                 - StripPrefix=1
             - id: orders
-              uri: lb://order-service
+              uri: lb://orders-service
               predicates:
                 - Path=/api/orders/**
               filters:

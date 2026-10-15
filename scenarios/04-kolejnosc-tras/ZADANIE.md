@@ -28,6 +28,9 @@ curl -i http://localhost:8080/api/orders/7
 
 **Pytanie dodatkowe:** użyj `GET /actuator/gateway/routes`. W jakiej kolejności są trasy i od czego ona zależy?
 
+Kolejność defaultowo zalezży od kolejnosci czytania pliku od góry do dołu, ale mozna ją zmienic za pomocą
+atrybut "order" w application.yml - czym mniejsza wartość, tym wyższy priorytet ma
+
 ## Kiedy skończysz
 
 `check.sh` ma wypisać `WYNIK: wszystkie sprawdzenia przeszły`. Omówienie rozwiązania przedstawi prowadzący po zajęciach.
