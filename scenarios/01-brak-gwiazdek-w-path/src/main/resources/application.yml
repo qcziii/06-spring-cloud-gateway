@@ -12,7 +12,7 @@ spring:
             - id: users
               uri: http://localhost:8081
               predicates:
-                - Path=/api/users
+                - Path=/api/users/**
               filters:
                 - StripPrefix=1
             - id: orders

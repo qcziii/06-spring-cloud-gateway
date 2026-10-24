@@ -14,6 +14,11 @@ spring:
                 allowed-origins: "http://localhost:3000"
                 allowed-methods: "*"
                 allowed-headers: "*"
+
+
+          default-filters:
+             - DedupeResponseHeader=Access-Control-Allow-Origin, RETAIN_FIRST
+
           routes:
             - id: users
               uri: http://localhost:8081

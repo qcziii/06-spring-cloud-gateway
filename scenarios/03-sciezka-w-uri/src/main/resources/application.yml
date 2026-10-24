@@ -15,18 +15,20 @@ spring:
                 - Path=/api/users/**
               filters:
                 - StripPrefix=1
+
             - id: orders
               uri: http://localhost:8082
               predicates:
                 - Path=/api/orders/**
               filters:
                 - StripPrefix=1
+
             - id: orders-v2
-              uri: http://localhost:8082/orders
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/v2/orders/**
               filters:
-                - StripPrefix=3
+                - StripPrefix=2
 
 management:
   endpoints:

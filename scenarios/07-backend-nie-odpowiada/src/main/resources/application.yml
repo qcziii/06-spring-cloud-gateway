@@ -16,7 +16,7 @@ spring:
               filters:
                 - StripPrefix=1
             - id: orders
-              uri: http://localhost:8028
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/orders/**
               filters:

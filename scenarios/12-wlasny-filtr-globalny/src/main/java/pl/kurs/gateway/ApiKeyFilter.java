@@ -4,6 +4,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -25,10 +26,17 @@ public class ApiKeyFilter implements GlobalFilter, Ordered {
             return exchange.getResponse().setComplete();
         }
 
-        exchange.getRequest().getHeaders().add("X-Client-Id", "kurs-app");
+        ServerHttpRequest request = exchange.getRequest()
+                .mutate()
+                .headers(headers -> headers.set("X-Client-Id", "kurs-app"))
+                .build();
 
-        chain.filter(exchange);
-        return Mono.empty();
+        ServerWebExchange newExchange = exchange.mutate()
+                .request(request)
+                .build();
+
+
+        return chain.filter(newExchange);
     }
 
     @Override
