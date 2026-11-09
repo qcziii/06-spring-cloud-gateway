@@ -9,8 +9,8 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * Simple API key authorization: every request must have the X-Api-Key header.
- * After successful verification we pass the X-Client-Id header to the backend.
+ * Prosta autoryzacja kluczem API: każde żądanie musi mieć nagłówek X-Api-Key.
+ * Po udanej weryfikacji przekazujemy do backendu nagłówek X-Client-Id.
  */
 @Component
 public class ApiKeyFilter implements GlobalFilter, Ordered {

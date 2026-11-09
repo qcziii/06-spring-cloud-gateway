@@ -1,5 +1,5 @@
-# Default: the "users" service on port 8081.
-# The second instance runs as "orders" on 8082 (see scripts/start-backends.sh).
+# Domyślnie: serwis "users" na porcie 8081.
+# Drugi egzemplarz uruchamiamy jako "orders" na 8082 (patrz scripts/start-backends.sh).
 server:
   port: ${PORT:8081}
 app:

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Check for scenario 12-wlasny-filtr-globalny (the description is printed below)
-# Run: first scripts/start-backends.sh, then the gateway from this directory (mvn spring-boot:run), then ./check.sh
+# Scenariusz 12-wlasny-filtr-globalny: Własny filtr autoryzacji psuje odpowiedzi
+# Uruchom: najpierw scripts/start-backends.sh, potem gateway z tego katalogu (mvn spring-boot:run), potem ./check.sh
 source "$(dirname "$0")/../../scripts/lib.sh"
 echo "Scenariusz 12-wlasny-filtr-globalny: Własny filtr autoryzacji psuje odpowiedzi"
 require_gateway

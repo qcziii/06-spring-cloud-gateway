@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Starts two instances of the echo backend:
-#   users  -> http://localhost:8081  (handles /users/**)
-#   orders -> http://localhost:8082  (handles /orders/**)
+# Startuje dwa egzemplarze backendu echo:
+#   users  -> http://localhost:8081  (obsługuje /users/**)
+#   orders -> http://localhost:8082  (obsługuje /orders/**)
 set -e
-# Git Bash on Windows: do not turn arguments like /users into paths C:/Program Files/Git/...
+# Git Bash na Windows: nie zamieniaj argumentów typu /users na ścieżki C:/Program Files/Git/...
 export MSYS_NO_PATHCONV=1
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 JAR="$ROOT/backend/target/echo-backend-1.0.0.jar"

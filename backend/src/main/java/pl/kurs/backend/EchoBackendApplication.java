@@ -20,14 +20,14 @@ import org.springframework.web.server.WebFilter;
 import reactor.core.publisher.Mono;
 
 /**
- * "Echo" backend: returns JSON with what actually reached it
- * (method, path, query, headers). This shows what the gateway did to the request.
+ * Backend "echo": odsyła JSON z tym, co faktycznie do niego dotarło
+ * (metoda, ścieżka, query, nagłówki). Dzięki temu widać, co gateway zrobił z żądaniem.
  *
- * Special behaviour:
- *  - ?delay=3000      -> response delayed by 3000 ms
- *  - ?status=503      -> response with the given HTTP status
- *  - path starting with a prefix other than app.accepted-prefix -> 404
- *  - Origin header    -> the backend adds CORS headers itself (like an "overeager" backend team)
+ * Specjalne zachowania:
+ *  - ?delay=3000      -> odpowiedź opóźniona o 3000 ms
+ *  - ?status=503      -> odpowiedź z podanym kodem HTTP
+ *  - ścieżka zaczynająca się od prefiksu innego niż app.accepted-prefix -> 404
+ *  - nagłówek Origin  -> backend sam dokłada nagłówki CORS (jak "nadgorliwy" zespół backendu)
  */
 @SpringBootApplication
 public class EchoBackendApplication {
@@ -40,9 +40,9 @@ public class EchoBackendApplication {
     private String serviceName;
 
     /**
-     * The backend only handles paths starting with this prefix, e.g. /users.
-     * Configured without the leading "/" (e.g. "users"): Git Bash on Windows
-     * turns values starting with "/" into Windows paths (C:/Program Files/Git/...).
+     * Backend obsługuje tylko ścieżki zaczynające się od tego prefiksu, np. /users.
+     * W konfiguracji podawany bez wiodącego "/" (np. "users"): Git Bash na Windows
+     * zamienia wartości zaczynające się od "/" na ścieżki Windows (C:/Program Files/Git/...).
      */
     private final String acceptedPrefix;
 
@@ -84,7 +84,7 @@ public class EchoBackendApplication {
         });
     }
 
-    /** "Just in case" the backend sets CORS itself for every request with an Origin header. */
+    /** Backend "na wszelki wypadek" sam ustawia CORS dla każdego żądania z nagłówkiem Origin. */
     @Bean
     WebFilter naiveCors() {
         return (exchange, chain) -> {

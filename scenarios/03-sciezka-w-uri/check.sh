@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Check for scenario 03-sciezka-w-uri (the description is printed below)
-# Run: first scripts/start-backends.sh, then the gateway from this directory (mvn spring-boot:run), then ./check.sh
+# Scenariusz 03-sciezka-w-uri: Nowa wersja API v2 nie działa
+# Uruchom: najpierw scripts/start-backends.sh, potem gateway z tego katalogu (mvn spring-boot:run), potem ./check.sh
 source "$(dirname "$0")/../../scripts/lib.sh"
 echo "Scenariusz 03-sciezka-w-uri: Nowa wersja API v2 nie działa"
 require_gateway
