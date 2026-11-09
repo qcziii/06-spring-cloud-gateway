@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Wspólne funkcje dla skryptów check.sh w scenariuszach.
-# Wymagają tylko bash i curl.
+# Shared functions for the check.sh scripts in the scenarios.
+# They need only bash and curl.
 
 GW=${GW:-http://localhost:8080}
 PASS=0
@@ -12,7 +12,7 @@ trap 'rm -f "$BODY_FILE" "$HDR_FILE"' EXIT
 ok()  { echo "  [OK]   $1"; PASS=$((PASS+1)); }
 bad() { echo "  [FAIL] $1"; FAIL=$((FAIL+1)); }
 
-# Wykonuje żądanie; zapisuje kod, nagłówki i body. Argumenty jak dla curl.
+# Sends a request; stores the status code, headers and body. Arguments as for curl.
 call() {
   CODE=$(curl -s -o "$BODY_FILE" -D "$HDR_FILE" -w '%{http_code}' --max-time 15 "$@")
   BODY=$(cat "$BODY_FILE")
@@ -25,14 +25,14 @@ require_gateway() {
   fi
 }
 
-# expect_status "opis" 200 <argumenty curl>
+# expect_status "description" 200 <curl arguments>
 expect_status() {
   local desc=$1 expected=$2; shift 2
   call "$@"
   if [ "$CODE" = "$expected" ]; then ok "$desc (HTTP $CODE)"; else bad "$desc: oczekiwano HTTP $expected, jest HTTP $CODE. Body: ${BODY:0:300}"; fi
 }
 
-# expect_body "opis" 'fragment' <argumenty curl>  (sprawdza też, że HTTP 2xx)
+# expect_body "description" 'fragment' <curl arguments>  (also checks for HTTP 2xx)
 expect_body() {
   local desc=$1 fragment=$2; shift 2
   call "$@"
@@ -43,7 +43,7 @@ expect_body() {
   fi
 }
 
-# expect_header_count "opis" Nazwa-Naglowka 1 <argumenty curl>
+# expect_header_count "description" Header-Name 1 <curl arguments>
 expect_header_count() {
   local desc=$1 header=$2 expected=$3; shift 3
   call "$@"

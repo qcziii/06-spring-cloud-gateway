@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Scenariusz 11-starter-web: Gateway nie startuje po dodaniu zależności
-# Uruchom: najpierw scripts/start-backends.sh, potem gateway z tego katalogu (mvn spring-boot:run), potem ./check.sh
+# Check for scenario 11-starter-web (the description is printed below)
+# Run: first scripts/start-backends.sh, then the gateway from this directory (mvn spring-boot:run), then ./check.sh
 source "$(dirname "$0")/../../scripts/lib.sh"
 echo "Scenariusz 11-starter-web: Gateway nie startuje po dodaniu zależności"
 require_gateway

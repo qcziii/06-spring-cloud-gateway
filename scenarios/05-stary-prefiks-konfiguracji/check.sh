@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Scenariusz 05-stary-prefiks-konfiguracji: Po aktualizacji Spring Cloud wszystko zwraca 404
-# Uruchom: najpierw scripts/start-backends.sh, potem gateway z tego katalogu (mvn spring-boot:run), potem ./check.sh
+# Check for scenario 05-stary-prefiks-konfiguracji (the description is printed below)
+# Run: first scripts/start-backends.sh, then the gateway from this directory (mvn spring-boot:run), then ./check.sh
 source "$(dirname "$0")/../../scripts/lib.sh"
 echo "Scenariusz 05-stary-prefiks-konfiguracji: Po aktualizacji Spring Cloud wszystko zwraca 404"
 require_gateway
